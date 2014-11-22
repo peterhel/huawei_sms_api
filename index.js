@@ -8,17 +8,17 @@ queue.push(function(){
 });
 
 queue.push(function(){
-			var username = page.evaluate(function(){
+			var username = page.evaluate(function(username){
 			var el = document.getElementById('txt_Username');
-			el.value = 'admin';
+			el.value = username;
 			return el.value;
-		});
+		}, args[1]);
 		
-		var password = page.evaluate(function(){
+		var password = page.evaluate(function(password){
 			var el = document.getElementById('txt_Password');
-			el.value = 'myran_R0ckSt4r';
+			el.value = password;
 			return el.value;
-		});
+		}, args[2]);
 		
 		page.evaluate(function(){
 
@@ -40,11 +40,11 @@ queue.push(function(){
 	page.open('http://homerouter.cpe/html/sms/message.asp?phnoe_number=');
 });
 
-queue.push(function(phone){
-	var p = args[1];
+queue.push(function(){
+	var p = args[3];
 	console.log(p);
 
-	var t = args[2];
+	var t = args[4];
 	console.log(t);
 
 			var username = page.evaluate(function(phone){
